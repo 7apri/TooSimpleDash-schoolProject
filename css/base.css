@@ -1,0 +1,63 @@
+
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 500,700,900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+}
+:root{
+    --bg-color: #222831;
+    --primary-color: #393E46;
+    --text-color: #EEEEEE;
+    --accent-color: #33a6d7 ;
+    --font-family:  Inter, sans-serif;
+}
+.icon {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+[data-theme="light"] {
+    --bg-color: #FFFFFF;
+    --primary-color: #F0F0F0;
+    --text-color: #222831;
+    .icon{
+        filter: none;
+        -webkit-filter: none;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-block-end: 64px;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    transition: background-color 0.3s, color 0.3s;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button,
+input {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 4px;
+}
+button{
+    border: none;
+}
+.hidden{
+    display: none;
+}

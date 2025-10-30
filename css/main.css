@@ -1,0 +1,69 @@
+
+/*
+  Header
+*/
+html{
+  scroll-snap-type: y mandatory;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+}
+header .left{
+  position: fixed;
+  z-index: 1;
+  bottom: .5vh;
+  right: 1.2%;
+  left: 1.2%;
+  width: calc(100% - 2.4%);
+  display: flex;
+  justify-content: flex-end;
+  gap: .5em;
+}
+header .log-out-btn{
+  padding: .8em 1em;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+header .mode-btn {
+  padding: 0 1em;
+}
+/*
+  Widgety
+*/
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.widget {
+  padding: 1em 1.4em;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  flex: 1 0 400px;
+  scroll-snap-align: center;
+}
+.widget:not(.focused):hover {
+  cursor: pointer;
+}
+
+.weather {
+  background-color: #f8b400;
+  height: 50vh;
+}
+.todo {
+  background-color: #6ab04c;
+  height: 70vh;
+}
+.calendar {
+  background-color: #2980b9;
+  height: 60vh;
+}

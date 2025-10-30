@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login | SimpleDash</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/login.css">
+
+
+    <!-- Meta description  -->
+    <meta name="description" content="Login page for SimpleDash - simple and clean dashboard login.">
+
+    <!-- Social media / Open Graph tags -->
+    <meta property="og:title" content="Login | SimpleDash">
+    <meta property="og:description" content="Log in to your SimpleDash account.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/og-image.png">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#393E46">
+</head>
+<body>
+    <main>
+        <div class="login-container">
+        <h1>Log in</h1>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="JohnDoe123" required>
+
+            <label for="password">Password:</label>
+            <div class="input-wrap">
+                <input type="password" id="password" name="password" placeholder="12456" required >
+                <button id="togglePassword" class="pass-visibility" type="button">
+                    <img src="./assets/Icons/eye-solid-full.svg" alt="" width="24" height="24" class="icon">
+                </button>
+            </div>
+
+            <button type="submit">Log in</button>
+        </form>
+        <div>
+            <button id="forgot-password">Forgor pass?</button>
+            <button id="create-account">Sign up</button>
+            <button id="google-login" class="google">Google Login</button>
+        </div>
+        </div>
+        <button class="mode-btn">
+            <img src="./assets/Icons/lightbulb-solid-full.svg" alt="switch to light mode" width="24" height="24" class="icon">
+        </button>
+    </main>
+    <footer>
+        <span>&copy; Jágl Patrik 2025</span>
+    </footer>
+    <script src="./js/login.js" type="module"></script>
+</body>
+</html>
