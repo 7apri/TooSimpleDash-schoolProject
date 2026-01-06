@@ -1,0 +1,75 @@
+/* 
+    Compile this papiku !!
+    jako fr tohle mu nedavej
+*/
+
+@import url("../base.css");
+
+@import url("./components/header.css");
+@import url("./components/weatherWidget.css");
+@import url("./components/todoWidget.css");
+@import url("./components/calendarWidget.css");
+
+.widget {
+    background-color: var(--bg-color-high);
+    border-radius: 4px;
+    height: 80vh; width: 100%;
+    padding: min(3vh,1em) min(3vw,1em);
+    gap: 2vh;
+    font-size: max(1rem, 2.2vh);
+}
+
+main{
+    gap: 2vh;
+    margin: 0 2vw;
+}
+
+body{ 
+    gap: 1.5vh;
+}
+/*! purgecss start ignore */
+*::-webkit-scrollbar{
+    display: none;
+}
+*{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+/*! purgecss end ignore */
+.scrollable{
+    scrollbar-width: auto;
+    scrollbar-color: var(--fg-color) var(--bg-color-high);
+}
+.scrollable::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; 
+}
+.scrollable::-webkit-scrollbar-track {
+    background: var(--fg-color);
+    border-radius: 10px;
+}
+.scrollable::-webkit-scrollbar-thumb {
+    background: var(--bg-color-high);
+    border-radius: 10px;
+    border: 2px solid var(--surface-color);
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-color-high);
+}
+
+.container-left{ width: 100%; gap: 2vh;}
+
+@media (min-width:1200px ) {
+    main{  
+        flex-direction: row !important;
+        margin: 0;
+    }
+    .container-left{ flex: 1; height:100% }
+    .container-left section{ height: 45vh; }
+    .widget#weather-day{
+        min-width: 0;
+        height: 100%;
+        flex: 1;
+    }
+    body{ height: 100vh; width: 100dvw;}
+}

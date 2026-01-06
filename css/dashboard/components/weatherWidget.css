@@ -1,0 +1,86 @@
+.weather-day-temp{
+  font-size: max(3rem,16vh);
+  line-height: 1em;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  width:  max-content;
+}
+.weather-day-temp::after{
+  content: "°C";
+  position: absolute;
+  top: -0.8ch;
+  right: -1.7ch;
+  font-size: 0.5em;
+}
+
+.weather-day-condition{
+    font-size: max(1rem,3vh);
+    font-weight: 500;
+    color: var(--fg-color-dim);
+}
+
+.weather-day-details{font-size: max(1rem,3vh);}
+.weather-day-detail-text{ margin-left: min(2vw,0.3rem); }
+
+.weather-day-graf-container{ 
+    background-color: var(--surface-color); 
+    padding: 1.2vh 2vh 2vh 2vw;
+    flex: 1; 
+}
+.weather-day-graf{
+    min-height: 0;
+    flex: 1 100 0;
+}
+.weather-day-graf-temp{ position: relative; width: fit-content; }
+.weather-day-graf-temp::after{ content: "°"; position: absolute; }
+.cold::before{ 
+    content: "-";
+    position: absolute;
+    top: 0;
+    left: -0.7ch;
+}
+
+.weather-info-week-list{
+    overflow-x: auto; 
+    overflow-y: hidden;
+
+    background-color: var(--surface-color);
+
+    scroll-behavior: smooth; 
+    position: relative;
+}
+
+.weather-info-week-list-item{
+    flex-shrink: 0;
+    flex: 1;
+    padding: min(1rem, 2vh) min(1rem, 2vw);
+} .weather-info-week-list-item.active { border-top: 2px solid var(--fg-color); }
+.weather-info-week-list-item .icon{ width: 2em; height: 2em; }
+
+
+.weather-day-graf { color: var(--fg-color);}
+.weather-info-week-image{ width: 2em; }
+
+.weather-day-center,
+.weather-day-details 
+{
+  flex-shrink: 0;
+}
+.weather-week-btn {
+  position: absolute;
+  flex-shrink: 0;
+  opacity: 0;
+  width: 10%;
+  max-width: 50px;
+  height: 100%;
+  background-color: var(--fg-color);
+  border-radius: 0;
+  z-index: 2;
+}
+.weather-week-btn.left{
+  left: 0;
+}
+.weather-week-btn.right{
+  right: 0;
+}

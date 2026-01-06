@@ -1,0 +1,138 @@
+.todo{ 
+    font-size: max(1rem, 3vh) !important;
+}
+
+.todo-top{ display: flex; justify-content: space-between; flex: 1; align-items: center;}
+.todo-top input{
+    flex: 1;
+    max-width: 85%;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+}
+.todo input:focus-visible { outline: none; }
+
+.add-todo{
+    border: 2px solid var(--fg-color-low);
+    padding: 1vh min(0.5rem, 1.5vw) 1vh min(0.8rem, 2vw);
+    align-items: center;
+}
+.task,
+.add-todo
+{ border-radius: 15px; padding: 0.6em;}
+
+.add-todo:has(input:focus-visible),
+.add-todo:has(button:focus-visible){
+    border: 2px solid var(--fg-color-high); 
+}
+
+#dateInputTodo{ text-align: center; }
+
+.taskList{ 
+    gap: min(1rem,1vh);
+    flex:8;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.task{
+    border: 2px solid var(--fg-color);
+    translate: 0;
+    transition: 
+        translate 0.6s ease,
+        opacity 0.2s ease,
+        max-height 0.2s ease,
+        padding 0.2s ease;
+    backface-visibility: hidden;
+    will-change: translate, opacity;
+    overflow: hidden;
+    flex-shrink: 0;
+    order: 1;
+}
+
+.remove-task-btn:focus-within{ border: none; }
+.taskContent{ margin-left: 2vw; }
+
+.task.removing {
+    pointer-events: none;
+    translate: 150%;
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0; padding-bottom: 0;
+}
+
+@keyframes taskPop {
+    0% { 
+        opacity: 0; 
+        transform: translateY(10px);
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .task {
+        transition: opacity 0.2s ease;
+        translate: none !important;
+    }
+
+    .task.removing {
+        translate: 0 !important;
+        opacity: 0;
+    }
+
+    @keyframes taskPop {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+}
+
+.task.just-added {
+    animation: taskPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.task.completed{
+    order: 2;
+    text-decoration: line-through;
+}
+
+.task .todo-btn{
+    height: 1.5em; width: 1.5em; 
+    background-color: transparent;
+}
+
+.taskContent{
+    font-size: inherit;
+    flex: 1; 
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; 
+}
+
+.taskCheck {
+  appearance: none;
+  font-size: inherit;
+  min-width: calc(1em * 1.4); height: calc(1em * 1.4);
+  border-radius: 25%;
+  cursor: pointer;
+  position: relative;
+  margin-top: 0.1em;
+}
+.taskCheck:focus-visible { outline: 3px solid var(--fg-color) !important; outline-offset: 0; border: none;}
+
+.taskCheck::before {
+    width: 50%; height: 50%;
+    top: 25%; left: 25%;
+    position: absolute;
+    content: "";
+    transform: scale(0);
+    transition: 100ms transform ease-in-out;
+    background-color: var(--fg-color);
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+.taskCheck:checked::before {
+  transform: scale(1);
+}

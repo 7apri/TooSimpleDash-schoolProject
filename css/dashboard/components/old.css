@@ -1,0 +1,107 @@
+.calendar{
+    height: unset;
+    font-size: var(--font-size-variable-lg);
+    aspect-ratio: 1 / 1.2;
+    margin-bottom: 3em;
+    grid-area: cale;
+}
+
+.calendar-main{
+    flex: 1;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    padding: 1em 0.5em;
+}
+
+.calendar-header,
+.calendar-main
+{width: 100%;}
+
+@media (min-width: 1200px) {
+    .calendar{
+      margin-bottom: 0;
+      font-size: 2rem;
+      aspect-ratio: unset;
+    }
+    .calendar-main,
+    .calendar{
+        padding: 0.5em 0.3em;
+    }
+    .calendar-main{max-width: 600px;}
+}
+
+.day-btn {
+    width: 80%;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+.calendar-day.selected .day-btn{
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+.calendar-day.inactive .day-btn{
+    color: var(--fg-color-dimer);
+}
+.calendar-day.hasTasks .day-btn::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    background-color: #ff4757;
+    border-radius: 50%;
+}
+
+.calendar-day.hasTasks.completed .day-btn::after{
+    background-color: lightgreen;
+}
+
+.calendar-day.selected.hasTasks.completed .day-btn::after{
+    background-color: green;
+}
+
+.calendar-day.selected.hasTasks .day-btn::after {
+    background-color: var(--bg-color);
+}
+
+.calendar-day.weather-forecast .day-btn::before{
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+.calendar-day{ aspect-ratio: 1 / 1; }
+
+.calendar-day button{ font-size: inherit;}
+
+.calendar-day.active-week{
+    background-color: var(--surface-color);
+    position: relative;
+    border-top: 1px solid var(--fg-color-dim);
+    border-bottom: 1px solid var(--fg-color-dim);
+}
+
+.calendar-day.active-week.first{
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-left: 1px solid var(--fg-color-dim);
+}
+.calendar-day.active-week.last{
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-right: 1px solid var(--fg-color-dim);
+}
+

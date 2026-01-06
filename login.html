@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
     <title>Login | SimpleDash</title>
 
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
@@ -16,13 +17,45 @@
     <meta name="description" content="Login page for SimpleDash - simple and clean dashboard login.">
 
     <!-- Social media / Open Graph tags -->
+=======
+    <meta name="description" content="Login page for SimpleDash -not working rn (and never tbh)">
+
+>>>>>>> f49c7b5 (did some offline mining)
     <meta property="og:title" content="Login | SimpleDash">
     <meta property="og:description" content="Log in to your SimpleDash account.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="./assets/og-image.png">
 
+<<<<<<< HEAD
     <!-- Theme color for mobile browsers -->
     <meta name="theme-color" content="#393E46">
+=======
+    <meta name="theme-color" content="">
+    <meta name="color-scheme" content="dark light">
+
+    <title>Login | SimpleDash</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.svg">
+    <script>
+        (function() {
+            let color = '#222831';
+            try {
+                const saved = localStorage.getItem('theme');
+                const systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+                if (saved === 'light' || (!saved && systemLight)) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    color = '#ffffff';
+                }
+            } catch (e) { }
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', color);
+        })();
+    </script>
+    <link rel="stylesheet" href="./css/login/main.css">
+>>>>>>> f49c7b5 (did some offline mining)
 </head>
 <body>
     <main>
@@ -35,8 +68,15 @@
             <label for="password">Password:</label>
             <div class="input-wrap">
                 <input type="password" id="password" name="password" placeholder="12456" required >
+<<<<<<< HEAD
                 <button id="togglePassword" class="pass-visibility" type="button">
                     <img src="./assets/Icons/eye-solid-full.svg" alt="" width="24" height="24" class="icon">
+=======
+                <button id="togglePassword" class="pass-visibility" type="button" aria-label="Schovat heslo"> 
+                    <svg class="icon" aria-hidden="true" aria-hidden="true">
+                        <use href="./assets/iconBundle#eye"></use>
+                    </svg>
+>>>>>>> f49c7b5 (did some offline mining)
                 </button>
             </div>
 
@@ -48,6 +88,7 @@
             <button id="google-login" class="google">Google Login</button>
         </div>
         </div>
+<<<<<<< HEAD
         <button class="mode-btn">
             <img src="./assets/Icons/lightbulb-solid-full.svg" alt="switch to light mode" width="24" height="24" class="icon">
         </button>
@@ -56,5 +97,16 @@
         <span>&copy; Jágl Patrik 2025</span>
     </footer>
     <script src="./js/login.js" type="module"></script>
+=======
+        <button class="mode-btn" aria-label="">
+            <svg class="icon" aria-hidden="true">
+                <use href=""></use>
+            </svg>
+        </button>
+    <footer>
+        <span>&copy; Jágl Patrik 2025</span>
+    </footer>
+    <script src="./js/login/main.js" type="module"></script>
+>>>>>>> f49c7b5 (did some offline mining)
 </body>
 </html>

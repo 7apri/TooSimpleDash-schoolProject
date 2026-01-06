@@ -1,8 +1,13 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
+=======
+<html lang="cs">
+>>>>>>> f49c7b5 (did some offline mining)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<<<<<<< HEAD
     <title>SimpleDash</title>
 
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
@@ -66,4 +71,203 @@
     </main>
     <script src="./js/main.js" type="module"></script>
 </body>
+=======
+
+    <meta property="og:title" content="SimpleDash">
+    <meta property="og:description" content="A simple dashboard">
+    <meta name="description" content="The worst dashboard you have ever seen">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/favicon.svg">
+
+    <meta name="theme-color" content="">
+    <meta name="color-scheme" content="dark light">
+
+    <title>SimpleDash</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.svg">
+    <script>
+        (function() {
+            let color = '#222831';
+            try {
+                const saved = localStorage.getItem('theme');
+                const systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+                if (saved === 'light' || (!saved && systemLight)) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    color = '#ffffff';
+                }
+            } catch (e) { }
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', color);
+        })();
+    </script>
+    <link rel="stylesheet" href="./css/dashboard/main.css">
+</head>
+
+<body class="flex column">
+    <header id="weather" class="flex jc-space-between">
+        <div class="info flex jc-space-between ali-center">
+            <div class="flex ali-center">
+                <img src="./assets/icons/location-pin.svg" alt="" class="icon">
+                <span class="location-name" id="location-name"></span>
+            </div>
+            <span class="update-date" id="update-date"></span>
+        </div>
+        <div class="flex reversed ali-end jc-space-between actions">
+            <nav aria-label="Rychlá navigace">
+                <ul class="shortcuts flex column" id="shortcuts">
+                    <li>
+                        <button class="icon-container" id="open-all" aria-expanded="false"
+                            aria-label="Otevření menu navigace">
+                            <img src="./assets/icons/hamburger.svg" alt="" class="icon" aria-hidden="true">
+                        </button>
+                    </li>
+                    <li>
+                        <a href="#weather" class="icon-container" aria-label="Přeskočit na počasí">
+                            <img src="./assets/icons/weather-section.svg" alt="" class="icon" aria-hidden="true">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#todo" class="icon-container" aria-label="Přeskočit na úkoly">
+                            <img src="./assets/icons/todo-section.svg" alt="" class="icon" aria-hidden="true">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#calendar" class="icon-container" aria-label="Přeskočit na kalendář">
+                            <img src="./assets/icons/calendar-section.svg" alt="" class="icon" aria-hidden="true">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <ul class="settings flex column" id="settings">
+                <li>
+                    <button class="mode-btn icon-container" aria-label="">
+                        <svg class="icon" aria-hidden="true">
+                            <use href=""></use>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="icon-container" aria-label="Nastavení účtu">
+                        <img src="./assets/icons/account.svg" alt="" class="icon">
+                    </button>
+                </li>
+                <li>
+                    <a href="./login.html" class="icon-container" aria-label="Odhlásit se">
+                        <img src="./assets/icons/log-out.svg" alt="" class="icon">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="flex column ali-center">
+        <section class="widget flex column" id="weather-day">
+            <h2 class="sr-only"></h2>
+            <div class="weather-day-center fill-width text-center">
+                <p class="weather-day-temp" aria-hidden="true">0</p>
+                <p class="weather-day-condition" aria-hidden="true">o</p>
+                <span class="sr-only"></span>
+            </div>
+            <ul class="weather-day-details flex jc-space-between" aria-label="Detaily počasí.">
+                <li class="flex ali-center">
+                    <img src="./assets/icons/pressure.svg" alt="" class="icon" aria-hidden="true">
+                    <span class="sr-only">Tlak vzduchu: </span>
+                    <span class="weather-day-detail-text"></span>
+                    <span class="weather-day-detail-unit" aria-label="hektopaskalů">hPa</span>
+                </li>
+                <li class="flex ali-center">
+                    <img src="./assets/icons/wind.svg" alt="" class="icon" aria-hidden="true">
+                    <span class="sr-only">Rychlost větru: </span>
+                    <span class="weather-day-detail-text"></span>
+                    <span class="weather-day-detail-unit" aria-label="kilometry za hodinu">km/h</span>
+                </li>
+                <li class="flex ali-center">
+                    <img src="./assets/icons/water-drop.svg" alt="" class="icon" aria-hidden="true">
+                    <span class="sr-only">Vlhkost vzduchu: </span>
+                    <span class="weather-day-detail-text"></span>
+                    <span class="weather-day-detail-unit">%</span>
+                </li>
+            </ul>
+            <div class="weather-day-graf-container fill-width flex column jc-space-between border-radius-md shadow-highlight"
+                id="graf">
+                <p class="weather-day-graf-label" id="graf-title">Teplota (°C)</p>
+                <canvas class="weather-day-graf fill-width" aria-labelledby="graf-title">
+                    <p>Graf zobrazující průběh teploty během dne. Podrobné hodnoty jsou vypsány v následujícím seznamu.</p>
+                </canvas>
+                <ul class="flex jc-space-between" id="graf-temps" aria-label="Teploty podle denní doby" aria-live="polite">
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Ráno</p>
+                    </li>
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Den</p>
+                    </li>
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Večer</p>
+                    </li>
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Noc</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="pos-relative flex ali-center fill-width">
+                <button class='weather-week-btn left' aria-label='Posunout doleva'></button>
+                <ul class="weather-info-week-list flex fill-width border-radius-md shadow-highlight" id="week-list" aria-label="Předpověď na osm dní">
+                </ul>
+                <button class='weather-week-btn right' aria-label='Posunout doprava'></button>
+            </div>
+        </section>
+        <div class="flex column container-left">
+            <section class="todo widget flex column" id="todo">
+                <h2 class="sr-only" id="todo-heading">Seznam úkolů a správa denních aktivit</h2>
+                <nav class="todo-top" aria-label="Navigace mezi dny">
+                    <button class="icon-container" id="prevDayTodo" aria-label="Předchozí den">
+                        <img src="./assets/icons/left-arrow.svg" alt="" class="icon">
+                    </button>
+                    
+                    <label for="dateInputTodo" class="sr-only">Vybrat konkrétní datum</label>
+                    <input type="date" id="dateInputTodo" />
+                    
+                    <button class="icon-container" id="nextDayTodo" aria-label="Následující den">
+                        <img src="./assets/icons/right-arrow.svg" alt="" class="icon">
+                    </button>
+                </nav>
+                <form class="add-todo todo-top">
+                    <label class="sr-only" for="addInput">Zadejte svůj úkol</label>
+                    <input type="text" id="addInput" placeholder="Hodně důležitý úkol..." />
+                    
+                    <button class="icon-container" aria-label="Přidat úkol">
+                        <img src="./assets/icons/plus.svg" alt="" class="icon" id="addTodo">
+                    </button>
+                </form>
+                <ul class="taskList flex column scrollable" id="taskList" aria-live="polite" aria-labelledby="todo-heading"></ul>
+            </section>
+            <section class="calendar widget flex column center jc-space-between" id="calendar">
+                <h2 class="sr-only" id="calendar-heading">Měsíční kalendář pro navigaci v čase</h2>
+                <nav class="calendar-header flex jc-space-between ali-center fill-width" aria-label="Navigace mezi měsíci"> 
+                    <button class="icon-container" id="prevMonthCalendar"><img src="./assets/icons/left-arrow.svg"
+                            alt="previus day icon" class="icon"></button>
+                    <div class="current-view">
+                        <span id="monthDisplayCalendar"></span>
+                        <span id="yearDisplayCalendar"></span>
+                    </div>
+                    <button class="icon-container" id="nextMonthCalendar"><img src="./assets/icons/right-arrow.svg" alt="next day icon" class="icon"></button>
+                </nav>
+                <ul class="calendar-main grid scrollable fill-width" id="calendarGrid" aria-labelledby="calendar-heading"></ul>
+            </section>
+        </div>
+    </main>
+</body>
+<script src="./js/dashboard/main.js" type="module"></script>
+
+>>>>>>> f49c7b5 (did some offline mining)
 </html>

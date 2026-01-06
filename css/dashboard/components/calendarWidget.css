@@ -1,0 +1,100 @@
+@media (max-width: 1199px) {
+    .calendar {
+        margin-bottom: 3.5em;
+        height: fit-content !important;
+        max-height: 80vh;
+        font-size: clamp(1rem, 5vw, 2rem) !important;
+    }
+}
+
+.calendar {
+    padding: 2vh 1.5vw !important;
+}
+
+.calendar-main {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.calendar-day,
+.day-btn {
+    aspect-ratio: 1 / 1;
+}
+
+.day-btn {
+    width: 85%;
+    height: 85%;
+    aspect-ratio: 1 / 1;
+    background: transparent;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+}
+
+@media (min-width: 1200px) {
+    .calendar-main {
+        max-width: max(400px, 22vw);
+        min-height: 0;
+        flex: none;
+        overflow: hidden;
+    }
+}
+
+.calendar-day.active-week .day-btn { color: var(--fg-color-high); }
+
+.calendar-day.inactive.active-week .day-btn { color: var(--fg-color); }
+
+.calendar-day.selected .day-btn {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+
+.calendar-day.inactive .day-btn { color: var(--fg-color-low); }
+
+.calendar-day.hasTasks .day-btn::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10%;
+    height: 10%;
+    background-color: #ff4757;
+    border-radius: 50%;
+}
+
+.calendar-day.hasTasks.completed .day-btn::after { background-color: lightgreen; }
+
+.calendar-day.selected.hasTasks.completed .day-btn::after { background-color: green; }
+
+.calendar-day.selected.hasTasks .day-btn::after {
+    background-color: var(--bg-color);
+}
+
+.calendar-day.weather-forecast {
+    text-decoration: underline;
+    color: var(--fg-color);
+}
+
+.calendar-day.selected.weather-forecast { color: var(--bg-color); }
+
+.calendar-day.active-week {
+    background-color: var(--surface-color);
+    position: relative;
+    border-top: 1px solid var(--fg-color);
+    border-bottom: 1px solid var(--fg-color);
+}
+
+.calendar-day.active-week.first {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-left: 1px solid var(--fg-color);
+}
+
+.calendar-day.active-week.last {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-right: 1px solid var(--fg-color);
+}

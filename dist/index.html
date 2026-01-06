@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta property="og:title" content="SimpleDash">
+    <meta property="og:description" content="A simple dashboard">
+    <meta name="description" content="The worst dashboard you have ever seen">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="data:image/svg+xml,%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cstyle%3e%20path%20{%20stroke:%20%23000000;%20}%20@media%20(prefers-color-scheme:%20dark)%20{%20path%20{%20stroke:%20%23ffffff;%20}%20}%20%3c/style%3e%3cpath%20d='M4%207C4%205.34315%205.34315%204%207%204C8.65685%204%2010%205.34315%2010%207C10%208.65685%208.65685%2010%207%2010C5.34315%2010%204%208.65685%204%207Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M14%207C14%205.34315%2015.3431%204%2017%204C18.6569%204%2020%205.34315%2020%207C20%208.65685%2018.6569%2010%2017%2010C15.3431%2010%2014%208.65685%2014%207Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M14%2017C14%2015.3431%2015.3431%2014%2017%2014C18.6569%2014%2020%2015.3431%2020%2017C20%2018.6569%2018.6569%2020%2017%2020C15.3431%2020%2014%2018.6569%2014%2017Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M4%2017C4%2015.3431%205.34315%2014%207%2014C8.65685%2014%2010%2015.3431%2010%2017C10%2018.6569%208.65685%2020%207%2020C5.34315%2020%204%2018.6569%204%2017Z'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e">
+
+    <meta name="theme-color" content="">
+    <meta name="color-scheme" content="dark light">
+
+    <title>SimpleDash</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-DMsC7vxO.svg">
+    <script>
+        (function() {
+            let color = '#222831';
+            try {
+                const saved = localStorage.getItem('theme');
+                const systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+                if (saved === 'light' || (!saved && systemLight)) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    color = '#ffffff';
+                }
+            } catch (e) { }
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', color);
+        })();
+    </script>
+  <script type="module" crossorigin src="/assets/main-D2D_phtj.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/theme-B0qO6fCl.js">
+  <link rel="stylesheet" crossorigin href="/assets/main-CWOPrqiz.css">
+</head>
+
+<body class="flex column">
+    <header id="weather" class="flex jc-space-between">
+        <div class="info flex jc-space-between ali-center">
+            <div class="flex ali-center">
+                <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12%2021C15.5%2017.4%2019%2014.1764%2019%2010.2C19%206.22355%2015.866%203%2012%203C8.13401%203%205%206.22355%205%2010.2C5%2014.1764%208.5%2017.4%2012%2021Z'%20stroke='%231a1a1aff'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%2012C13.1046%2012%2014%2011.1046%2014%2010C14%208.89543%2013.1046%208%2012%208C10.8954%208%2010%208.89543%2010%2010C10%2011.1046%2010.8954%2012%2012%2012Z'%20stroke='%231a1a1aff'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="" class="icon">
+                <span class="location-name" id="location-name"></span>
+            </div>
+            <span class="update-date" id="update-date"></span>
+        </div>
+        <div class="flex reversed ali-end jc-space-between actions">
+            <nav aria-label="Rychlá navigace">
+                <ul class="shortcuts flex column" id="shortcuts">
+                    <li>
+                        <button class="icon-container" id="open-all" aria-expanded="false"
+                            aria-label="Otevření menu navigace">
+                            <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M4%206H20M4%2012H20M4%2018H20'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                        </button>
+                    </li>
+                    <li>
+                        <a href="#weather" class="icon-container" aria-label="Přeskočit na počasí">
+                            <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M11.0947%208.02658C11.5476%205.73111%2013.5717%204%2016%204C18.7614%204%2021%206.23858%2021%209C21%2011.0345%2019.7849%2012.7852%2018.0408%2013.5659M11.0947%208.02658C9.24194%208.21766%207.68947%209.4193%207%2011C4.6%2011.375%203%2013.3144%203%2015.4137C3%2017.9466%205.14903%2020%207.8%2020L15%2020C17.2091%2020%2019%2018.2719%2019%2016.1402C19%2015.1829%2018.6388%2014.2698%2018.0408%2013.5659M11.0947%208.02658C11.265%208.00902%2011.4378%208%2011.6127%208C14.2747%208%2016.4504%209.99072%2016.6%2012.5C17.1583%2012.7354%2017.6501%2013.106%2018.0408%2013.5659'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#todo" class="icon-container" aria-label="Přeskočit na úkoly">
+                            <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='%23000000'%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M2,11H8a1,1,0,0,0,1-1V4A1,1,0,0,0,8,3H2A1,1,0,0,0,1,4v6A1,1,0,0,0,2,11ZM3,5H7V9H3ZM23,7a1,1,0,0,1-1,1H12a1,1,0,0,1,0-2H22A1,1,0,0,1,23,7Zm0,10a1,1,0,0,1-1,1H12a1,1,0,0,1,0-2H22A1,1,0,0,1,23,17ZM3.235,19.7,1.281,17.673a1,1,0,0,1,1.438-1.391l1.252,1.3L7.3,14.289A1,1,0,1,1,8.7,15.711l-4.046,4a1,1,0,0,1-.7.289H3.942A1,1,0,0,1,3.235,19.7Z'/%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#calendar" class="icon-container" aria-label="Přeskočit na kalendář">
+                            <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M3%209H21M7%203V5M17%203V5M6%2013H8M6%2017H8M11%2013H13M11%2017H13M16%2013H18M16%2017H18M6.2%2021H17.8C18.9201%2021%2019.4802%2021%2019.908%2020.782C20.2843%2020.5903%2020.5903%2020.2843%2020.782%2019.908C21%2019.4802%2021%2018.9201%2021%2017.8V8.2C21%207.07989%2021%206.51984%2020.782%206.09202C20.5903%205.71569%2020.2843%205.40973%2019.908%205.21799C19.4802%205%2018.9201%205%2017.8%205H6.2C5.0799%205%204.51984%205%204.09202%205.21799C3.71569%205.40973%203.40973%205.71569%203.21799%206.09202C3%206.51984%203%207.07989%203%208.2V17.8C3%2018.9201%203%2019.4802%203.21799%2019.908C3.40973%2020.2843%203.71569%2020.5903%204.09202%2020.782C4.51984%2021%205.07989%2021%206.2%2021Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <ul class="settings flex column" id="settings">
+                <li>
+                    <button class="mode-btn icon-container" aria-label="">
+                        <svg class="icon" aria-hidden="true">
+                            <use href=""></use>
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="icon-container" aria-label="Nastavení účtu">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20id='Layer_1'%20data-name='Layer%201'%20xmlns='http://www.w3.org/2000/svg'%3e%3cdefs%3e%3cstyle%3e.cls-1{fill:none;stroke:%23020202;stroke-miterlimit:10;stroke-width:1.91px;}%3c/style%3e%3c/defs%3e%3ccircle%20class='cls-1'%20cx='12'%20cy='7.25'%20r='5.73'/%3e%3cpath%20class='cls-1'%20d='M1.5,23.48l.37-2.05A10.3,10.3,0,0,1,12,13h0a10.3,10.3,0,0,1,10.13,8.45l.37,2.05'/%3e%3c/svg%3e" alt="" class="icon">
+                    </button>
+                </li>
+                <li>
+                    <a href="./login.html" class="icon-container" aria-label="Odhlásit se">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Interface%20/%20Log_Out'%3e%3cpath%20id='Vector'%20d='M12%2015L15%2012M15%2012L12%209M15%2012H4M9%207.24859V7.2002C9%206.08009%209%205.51962%209.21799%205.0918C9.40973%204.71547%209.71547%204.40973%2010.0918%204.21799C10.5196%204%2011.0801%204%2012.2002%204H16.8002C17.9203%204%2018.4796%204%2018.9074%204.21799C19.2837%204.40973%2019.5905%204.71547%2019.7822%205.0918C20%205.5192%2020%206.07899%2020%207.19691V16.8036C20%2017.9215%2020%2018.4805%2019.7822%2018.9079C19.5905%2019.2842%2019.2837%2019.5905%2018.9074%2019.7822C18.48%2020%2017.921%2020%2016.8031%2020H12.1969C11.079%2020%2010.5192%2020%2010.0918%2019.7822C9.71547%2019.5905%209.40973%2019.2839%209.21799%2018.9076C9%2018.4798%209%2017.9201%209%2016.8V16.75'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/g%3e%3c/svg%3e" alt="" class="icon">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="flex column ali-center">
+        <section class="widget flex column" id="weather-day">
+            <h2 class="sr-only"></h2>
+            <div class="weather-day-center fill-width text-center">
+                <p class="weather-day-temp" aria-hidden="true">0</p>
+                <p class="weather-day-condition" aria-hidden="true">o</p>
+                <span class="sr-only"></span>
+            </div>
+            <ul class="weather-day-details flex jc-space-between" aria-label="Detaily počasí.">
+                <li class="flex ali-center">
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12%209C11.4477%209%2011%209.44771%2011%2010V15.2676C10.4022%2015.6134%2010%2016.2597%2010%2017C10%2018.1046%2010.8954%2019%2012%2019C13.1046%2019%2014%2018.1046%2014%2017C14%2016.2597%2013.5978%2015.6134%2013%2015.2676V10C13%209.44771%2012.5523%209%2012%209Z'%20fill='%23000000'/%3e%3cpath%20d='M11%206C11%205.44772%2011.4477%205%2012%205C12.5523%205%2013%205.44772%2013%206C13%206.55228%2012.5523%207%2012%207C11.4477%207%2011%206.55228%2011%206Z'%20fill='%23000000'/%3e%3cpath%20d='M16%207C15.4477%207%2015%207.44772%2015%208C15%208.55229%2015.4477%209%2016%209C16.5523%209%2017%208.55229%2017%208C17%207.44772%2016.5523%207%2016%207Z'%20fill='%23000000'/%3e%3cpath%20d='M6%2013C5.44772%2013%205%2012.5523%205%2012C5%2011.4477%205.44772%2011%206%2011C6.55228%2011%207%2011.4477%207%2012C7%2012.5523%206.55228%2013%206%2013Z'%20fill='%23000000'/%3e%3cpath%20d='M7%208C7%208.55229%207.44772%209%208%209C8.55228%209%209%208.55228%209%208C9%207.44772%208.55228%207%208%207C7.44772%207%207%207.44772%207%208Z'%20fill='%23000000'/%3e%3cpath%20d='M18%2013C17.4477%2013%2017%2012.5523%2017%2012C17%2011.4477%2017.4477%2011%2018%2011C18.5523%2011%2019%2011.4477%2019%2012C19%2012.5523%2018.5523%2013%2018%2013Z'%20fill='%23000000'/%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M12%2023C18.0751%2023%2023%2018.0751%2023%2012C23%205.92487%2018.0751%201%2012%201C5.92487%201%201%205.92487%201%2012C1%2018.0751%205.92487%2023%2012%2023ZM12%2020.9932C7.03321%2020.9932%203.00683%2016.9668%203.00683%2012C3.00683%207.03321%207.03321%203.00683%2012%203.00683C16.9668%203.00683%2020.9932%207.03321%2020.9932%2012C20.9932%2016.9668%2016.9668%2020.9932%2012%2020.9932Z'%20fill='%23000000'/%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                    <span class="sr-only">Tlak vzduchu: </span>
+                    <span class="weather-day-detail-text"></span>
+                    <span class="weather-day-detail-unit" aria-label="hektopaskalů">hPa</span>
+                </li>
+                <li class="flex ali-center">
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M18.5%2022.75C16.16%2022.75%2014.25%2020.84%2014.25%2018.5V18C14.25%2017.59%2014.59%2017.25%2015%2017.25C15.41%2017.25%2015.75%2017.59%2015.75%2018V18.5C15.75%2020.02%2016.98%2021.25%2018.5%2021.25C20.02%2021.25%2021.25%2020.02%2021.25%2018.5C21.25%2016.98%2020.02%2015.75%2018.5%2015.75H2C1.59%2015.75%201.25%2015.41%201.25%2015C1.25%2014.59%201.59%2014.25%202%2014.25H18.5C20.84%2014.25%2022.75%2016.16%2022.75%2018.5C22.75%2020.84%2020.84%2022.75%2018.5%2022.75Z'%20fill='%23000000'/%3e%3cpath%20d='M18.5%2012.75H2C1.59%2012.75%201.25%2012.41%201.25%2012C1.25%2011.59%201.59%2011.25%202%2011.25H18.5C20.02%2011.25%2021.25%2010.02%2021.25%208.5C21.25%206.98%2020.02%205.75%2018.5%205.75C16.98%205.75%2015.75%206.98%2015.75%208.5V9C15.75%209.41%2015.41%209.75%2015%209.75C14.59%209.75%2014.25%209.41%2014.25%209V8.5C14.25%206.16%2016.16%204.25%2018.5%204.25C20.84%204.25%2022.75%206.16%2022.75%208.5C22.75%2010.84%2020.84%2012.75%2018.5%2012.75Z'%20fill='%23000000'/%3e%3cpath%20d='M9.31%209.75109H2C1.59%209.75109%201.25%209.41109%201.25%209.00109C1.25%208.59109%201.59%208.25109%202%208.25109H9.31C10.38%208.25109%2011.25%207.38109%2011.25%206.31109C11.25%205.24109%2010.38%204.37109%209.31%204.37109C8.24%204.37109%207.37%205.24109%207.37%206.31109V6.69109C7.37%207.10109%207.03%207.44109%206.62%207.44109C6.21%207.44109%205.87%207.11109%205.87%206.69109V6.31109C5.87%204.41109%207.41%202.87109%209.31%202.87109C11.21%202.87109%2012.75%204.41109%2012.75%206.31109C12.75%208.21109%2011.21%209.75109%209.31%209.75109Z'%20fill='%23000000'/%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                    <span class="sr-only">Rychlost větru: </span>
+                    <span class="weather-day-detail-text"></span>
+                    <span class="weather-day-detail-unit" aria-label="kilometry za hodinu">km/h</span>
+                </li>
+                <li class="flex ali-center">
+                    <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Environment%20/%20Water_Drop'%3e%3cpath%20id='Vector'%20d='M16.0001%2013.3848C16.0001%2014.6088%2015.526%2015.7828%2014.6821%2016.6483C14.203%2017.1397%2013.6269%2017.5091%2013%2017.7364M19%2013.6923C19%207.11538%2012%202%2012%202C12%202%205%207.11538%205%2013.6923C5%2015.6304%205.7375%2017.4893%207.05025%2018.8598C8.36301%2020.2302%2010.1436%2020.9994%2012.0001%2020.9994C13.8566%2020.9994%2015.637%2020.2298%2016.9497%2018.8594C18.2625%2017.4889%2019%2015.6304%2019%2013.6923Z'%20stroke='%23000000'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/g%3e%3c/svg%3e" alt="" class="icon" aria-hidden="true">
+                    <span class="sr-only">Vlhkost vzduchu: </span>
+                    <span class="weather-day-detail-text"></span>
+                    <span class="weather-day-detail-unit">%</span>
+                </li>
+            </ul>
+            <div class="weather-day-graf-container fill-width flex column jc-space-between border-radius-md shadow-highlight"
+                id="graf">
+                <p class="weather-day-graf-label" id="graf-title">Teplota (°C)</p>
+                <canvas class="weather-day-graf fill-width" aria-labelledby="graf-title">
+                    <p>Graf zobrazující průběh teploty během dne. Podrobné hodnoty jsou vypsány v následujícím seznamu.</p>
+                </canvas>
+                <ul class="flex jc-space-between" id="graf-temps" aria-label="Teploty podle denní doby" aria-live="polite">
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Ráno</p>
+                    </li>
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Den</p>
+                    </li>
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Večer</p>
+                    </li>
+                    <li class="grid center">
+                        <p class="weather-day-graf-temp" aria-hidden="true"></p>
+                        <span class="sr-only"></span>
+                        <p aria-hidden="true">Noc</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="pos-relative flex ali-center fill-width">
+                <button class='weather-week-btn left' aria-label='Posunout doleva'></button>
+                <ul class="weather-info-week-list flex fill-width border-radius-md shadow-highlight" id="week-list" aria-label="Předpověď na osm dní">
+                </ul>
+                <button class='weather-week-btn right' aria-label='Posunout doprava'></button>
+            </div>
+        </section>
+        <div class="flex column container-left">
+            <section class="todo widget flex column" id="todo">
+                <h2 class="sr-only" id="todo-heading">Seznam úkolů a správa denních aktivit</h2>
+                <nav class="todo-top" aria-label="Navigace mezi dny">
+                    <button class="icon-container" id="prevDayTodo" aria-label="Předchozí den">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%201024%201024'%20class='icon'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M768%20903.232l-50.432%2056.768L256%20512l461.568-448%2050.432%2056.768L364.928%20512z'%20fill='%23000000'%20/%3e%3c/svg%3e" alt="" class="icon">
+                    </button>
+                    
+                    <label for="dateInputTodo" class="sr-only">Vybrat konkrétní datum</label>
+                    <input type="date" id="dateInputTodo" />
+                    
+                    <button class="icon-container" id="nextDayTodo" aria-label="Následující den">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%201024%201024'%20class='icon'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M256%20120.768L306.432%2064%20768%20512l-461.568%20448L256%20903.232%20659.072%20512z'%20fill='%23000000'%20/%3e%3c/svg%3e" alt="" class="icon">
+                    </button>
+                </nav>
+                <form class="add-todo todo-top">
+                    <label class="sr-only" for="addInput">Zadejte svůj úkol</label>
+                    <input type="text" id="addInput" placeholder="Hodně důležitý úkol..." />
+                    
+                    <button class="icon-container" aria-label="Přidat úkol">
+                        <img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%201024%201024'%20class='icon'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M473.6%20473.6V64h76.8v409.6H960v76.8H550.4V960H473.6V550.4H64V473.6h409.6z'%20fill='%23000000'%20/%3e%3c/svg%3e" alt="" class="icon" id="addTodo">
+                    </button>
+                </form>
+                <ul class="taskList flex column scrollable" id="taskList" aria-live="polite" aria-labelledby="todo-heading"></ul>
+            </section>
+            <section class="calendar widget flex column center jc-space-between" id="calendar">
+                <h2 class="sr-only" id="calendar-heading">Měsíční kalendář pro navigaci v čase</h2>
+                <nav class="calendar-header flex jc-space-between ali-center fill-width" aria-label="Navigace mezi měsíci"> 
+                    <button class="icon-container" id="prevMonthCalendar"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%201024%201024'%20class='icon'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M768%20903.232l-50.432%2056.768L256%20512l461.568-448%2050.432%2056.768L364.928%20512z'%20fill='%23000000'%20/%3e%3c/svg%3e"
+                            alt="previus day icon" class="icon"></button>
+                    <div class="current-view">
+                        <span id="monthDisplayCalendar"></span>
+                        <span id="yearDisplayCalendar"></span>
+                    </div>
+                    <button class="icon-container" id="nextMonthCalendar"><img src="data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='utf-8'?%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Generator:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20width='800px'%20height='800px'%20viewBox='0%200%201024%201024'%20class='icon'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M256%20120.768L306.432%2064%20768%20512l-461.568%20448L256%20903.232%20659.072%20512z'%20fill='%23000000'%20/%3e%3c/svg%3e" alt="next day icon" class="icon"></button>
+                </nav>
+                <ul class="calendar-main grid scrollable fill-width" id="calendarGrid" aria-labelledby="calendar-heading"></ul>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

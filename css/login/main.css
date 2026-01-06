@@ -1,0 +1,162 @@
+@import "../base.css";
+
+main {
+  display: grid;
+  place-items: center;
+  height: 100dvh;
+  padding-block-end: var(--padding-xl);
+}
+
+footer {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background-color: var(--bg-color-high);
+  border-radius: 5px 5px 0 0;
+  height: 32px;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  font-size: .85rem;
+}
+
+/* 
+ Container 
+*/
+.login-container {
+  background-color: var(--bg-color-high);
+  color: var(--fg-color);
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(
+    var(--padding-md),
+    3vw, 
+    var(--padding-xl)
+  );
+  width: min(92%, 500px);
+}
+
+.login-container form { width: 100%; display: grid; gap: var(--margin-xs); }
+.login-container label { 
+  align-self: flex-start; 
+  margin-block: var(--margin-xs) var(--margin-xxs); 
+}
+
+.login-container input {
+  width: 100%;
+  padding: var(--padding-sm);
+  font-weight: 700;
+  background-color: var(--bg-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  transition: border-color .2s, box-shadow .2s, background-color .2s, color .2s;
+}
+
+.login-container input:hover { border-color: var(--accent-color); }
+
+.login-container input:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-color: var(--accent-color);
+  box-shadow: none;
+}
+
+.login-container input[aria-invalid="true"],
+.login-container input:invalid {
+  border-color: #e25c5c;
+  outline-color: #e25c5c;
+}
+
+.input-wrap { position: relative; }
+.pass-visibility {
+  width: 24px; height: 24px;
+  display: grid; place-items: center;
+  padding: 0;
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: var(--fg-color);
+  border-radius: 4px;
+}
+.pass-visibility:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+
+.login-container form :is(button[type="submit"], input[type="submit"]) {
+  width: 100%;
+  padding: var(--padding-md);
+  font-weight: 700;
+  border-radius: 4px;
+  border: 2px solid var(--fg-color);
+  background-color: var(--accent-color);
+  color: #fff;
+  margin-block: var(--margin-xs) var(--margin-md);
+  transition: filter .2s, transform .05s, outline-color .6s;
+}
+.login-container form :is(button[type="submit"], input[type="submit"]):hover {
+  filter: brightness(1.05);
+}
+.login-container form :is(button[type="submit"], input[type="submit"]):focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--accent-color), white 25%);
+  outline-offset: 2px;
+}
+.login-container form :is(button[type="submit"], input[type="submit"]):active {
+  transform: translateY(1px);
+}
+
+/* Extra action buttons */
+.login-container > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--margin-xxs);
+  width: 100%;
+}
+.login-container > div > button {
+  padding: var(--padding-md);
+  width: 32%;
+  display: inline-block;
+  font-weight: 700;
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  transition: background-color .2s, color .2s, outline-color .2s;
+}
+.login-container > div > button:hover,
+.login-container > div > button:focus-visible {
+  outline: 2px solid #fff;
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.mode-btn {
+  width: 48px; height: 48px;
+  position: fixed;
+  bottom: 40px; right: 10px;
+  display: grid; place-items: center;
+  background: transparent;
+  border-radius: 50%;
+}
+.mode-btn:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+@media (max-width: 500px) {
+  .login-container { width: 95%; padding: var(--padding-sm); }
+  .login-container button.google { margin-top: .2rem; width: 100%; }
+  .login-container > div > button { width: calc(50% - .2em); }
+  .login-container form :is(button[type="submit"], input[type="submit"]) {
+    margin-block: var(--margin-sm); padding: var(--padding-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
