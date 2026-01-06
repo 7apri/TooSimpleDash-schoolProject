@@ -1,5 +1,5 @@
 {
-<<<<<<< HEAD
+  "liveServer.settings.port": 5501,
   "cSpell.words": [
     "cale",
     "focusables",
@@ -8,7 +8,4 @@
     "tooo",
     "weat"
   ]
-=======
-    "liveServer.settings.port": 5501
->>>>>>> f49c7b5 (did some offline mining)
 }
