@@ -2,7 +2,8 @@
 
 > Your minimalist personal dashboard for staying organized and informed
 
-SimpleDash is a clean, modern web-based dashboard that brings together everything you need in one place - weather updates, task management, and calendar functionality. Built as a learning project to explore modern web development practices.
+SimpleDash is a relatively clean, modern web-based dashboard that brings together everything you need in one place - weather updates, task management, and calendar functionality. Built as a learning project to explore modern web development practices.
+_Why the name? dunno just cause_
 
 ## ✨ Features
 
@@ -76,17 +77,20 @@ This project is currently under active development as part of a learning journey
 
 ### Known Limitations
 - Weather API integration may require configuration
+- The dev is too lazy to make a working product.
 - Authentication system is planned but not yet implemented
-- Some features are being optimized for better performance
+- Most features should be optimized for better performance
 
 ## 📋 Roadmap
 
+- [ ] Full logic refactor and code cleanup
+- [ ] A working backend to make it actually work.
 - [ ] Full authentication and user management
 - [ ] Cloud synchronization for tasks and settings
 - [ ] Additional widget types (news, stocks, etc.)
 - [ ] Mobile app version
 - [ ] Multi-language support
-- [ ] Widget customization and layouts
+- [ ] Widget customization and layouts 
 
 ## 🏗️ Project Structure
 
@@ -125,4 +129,4 @@ This project showcases modern web development practices and leverages cutting-ed
 
 ---
 
-Made with ☕ and determination | A school project exploring modern web development
+Made with ☕ and determination + the fact my grade depends on it | A school project exploring modern web development

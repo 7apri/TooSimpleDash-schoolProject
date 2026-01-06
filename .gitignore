@@ -10,8 +10,9 @@
 *.userosscache
 *.sln.docstates
 *.env
-
+*.notThisgit
 # User-specific files (MonoDevelop/Xamarin Studio)
+node_modules/
 *.userprefs
 
 # Mono auto generated files
