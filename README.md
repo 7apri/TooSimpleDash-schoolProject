@@ -84,7 +84,7 @@ This project is currently under active development as part of a learning journey
 ## 📋 Roadmap
 
 - [ ] Full logic refactor and code cleanup
-- [ ] A working backend to make it actually work.
+- [ ] A working back end to make it actually work
 - [ ] Full authentication and user management
 - [ ] Cloud synchronization for tasks and settings
 - [ ] Additional widget types (news, stocks, etc.)
