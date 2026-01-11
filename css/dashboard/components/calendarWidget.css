@@ -1,6 +1,6 @@
 .calendar {
     padding: 2vh 1.5vw !important;
-    font-size: clamp(1rem, 2vw, 2rem) !important;
+    font-size: clamp(1rem, 2vmax, 2rem) !important;
 }
 
 @media (max-width: 1199px) {
@@ -33,7 +33,7 @@
 
 @media (min-width: 1200px) {
     .calendar-main {
-        max-width: 500px;
+        max-width: max(45%, 400px);
         min-height: 0;
         max-height: 90%;
         flex: none;
