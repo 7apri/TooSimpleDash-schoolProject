@@ -12,8 +12,10 @@
 *.env
 *.notThisgit
 # User-specific files (MonoDevelop/Xamarin Studio)
+dist/*
 node_modules/
 *.userprefs
+NOT-USED*
 
 # Mono auto generated files
 mono_crash.*

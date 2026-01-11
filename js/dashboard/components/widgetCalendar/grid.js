@@ -1,36 +1,60 @@
-import { capitalize, toDateString } from "../../../util/misc.js";
+import { toDateString } from "../../../util/misc.js";
 import { changeDateInputContent } from "../widgetTodo/dateInput.js";
 import { getTasksByDate } from "../widgetTodo/task.js";
 import { changeCalendarDateSelectorDate } from "./dateSelector.js";
 
 const dateToday = new Date();
 
+/**
+ * Manages the calendar grid UI, including date calculations, 
+ * rendering 42-day views, and handling day selection.
+ * @class
+ */
+
 class CalendarGrid {
+    /** @type {HTMLLIElement[]} List of <li> elements representing calendar days */
     _liElements = null;
+    /** @type {number|null} Current selected year */
     _selectedYear = null;
+    /** @type {number|null} Current selected month (1-12) */
     _selectedMonth = null;
+    /** @type {number|null} Current selected day of the month */
     _selectedDay = null;
+    /** @type {number|null} Index (0-41) of the currently selected <li> element */
     _selectedDayElIndex = null;
+    /** @type {Function|null} Callback triggered when the date changes */
     _refreshCallback = null;
 
-    get selectedDay() { return this._selectedDay}
+    /** @returns {number|null} The currently selected day number */
+    get selectedDay() { return this._selectedDay }
 
-    get fullDateArray () {
+    /**
+     * Gets or sets the date via an array.
+     * @type {number[]} [year, month, day]
+     */
+    get fullDateArray() {
         return [this._selectedYear, this._selectedMonth, this._selectedDay];
     }
-    set fullDateArray (value) {
+    set fullDateArray(value) {
         this.setDate(value);
     }
 
+    /**
+     * Gets or sets the date via a string (YYYY-MM-DD).
+     * @type {string|null}
+     */
     get fullDateString() {
         if (!this._selectedYear || !this._selectedMonth || !this._selectedDay) return null;
-        return toDateString(this._selectedYear,this._selectedMonth,this._selectedDay);
+        return toDateString(this._selectedYear, this._selectedMonth, this._selectedDay);
     }
-
     set fullDateString(value) {
         this.setDate(value.split('-').map(Number));
     }
 
+    /**
+     * Updates the internal state and triggers a grid refresh if necessary.
+     * @param {number[]} dateArray - [year, month, day]
+     */
     setDate ([year, month, day]) {
         if(month === undefined) return;
         if( month < 1 || month > 12) month = 1;
@@ -50,6 +74,12 @@ class CalendarGrid {
         this._refreshCallback && this._refreshCallback(this.fullDateString);  
     }
 
+    /**
+     * Creates the calendar grid and attaches click listeners.
+     * @param {HTMLElement} parentEl - The <ul> or container for the grid.
+     * @param {Function} [refreshCallback] - Runs when the date is updated.
+     * @param {Function} [daySelectedCallback] - Runs when a day is clicked.
+     */
     constructor(parentEl, refreshCallback, daySelectedCallback) {
         let finalHtml = "";
         for( let i = 0; i < 42; i++){
@@ -76,6 +106,10 @@ class CalendarGrid {
         if(daySelectedCallback) this._daySelectedCallback = daySelectedCallback;
     }
 
+    /**
+     * Visualizes the selection of a specific day and handles ARIA states.
+     * @param {HTMLElement|string} day - The <li> element or a date string.
+     */
     selectDay = (day) =>{
         if( typeof day === "string" ){
             day = this.findDayByDateString(day);
@@ -88,14 +122,13 @@ class CalendarGrid {
             lastSelectedDay.classList.remove('selected');
             lastSelectedDay.querySelector('button').setAttribute('aria-pressed', 'false');
         }
-
-        document.querySelectorAll('.active-week').forEach(calendarDay => calendarDay.classList.remove('active-week'));
         
         const dayBtn = day.querySelector('button')
         day.classList.add('selected');
         dayBtn.setAttribute('aria-pressed', 'true');
         day.parentElement.matches(':focus-within') && dayBtn.focus();
-
+        
+        document.querySelectorAll('.active-week').forEach(calendarDay => calendarDay.classList.remove('active-week'));
         for( let i = rowNumber * 7; i < rowNumber * 7 + 7; i++){
             this._liElements[i].classList.add('active-week');
         }
@@ -104,6 +137,11 @@ class CalendarGrid {
         this._selectedDayElIndex = day.dataset.index;
     };
 
+    /**
+     * Main rendering logic. Populates the 42 cells with correct day numbers,
+     * handles inactive days (prev/next month), and task indicators.
+     * @param {number[]|string} yearMonth - [year, month] or date string.
+     */
     updateGrid = (yearMonth) => {
         if(typeof yearMonth === "string" ){
             yearMonth = yearMonth.split('-').map(Number);
@@ -204,6 +242,9 @@ class CalendarGrid {
 
     };
 
+    /**
+     * Updates the status (tasks/completion) for the currently selected day only.
+     */
     updateSelectedDay = () =>{
         const daysTasks = getTasksByDate(toDateString(this._selectedYear,this._selectedMonth,this._selectedDay));
         const daysBtnEL =  this._liElements[this._selectedDayElIndex].querySelector('button');
@@ -225,6 +266,11 @@ class CalendarGrid {
        daysBtnEL.setAttribute('aria-label',ariaLabel.join(','));
     };
 
+    /**
+     * Helper to find the DOM element corresponding to a date string.
+     * @param {string} dateString - Format YYYY-MM-DD.
+     * @returns {HTMLLIElement|undefined}
+     */
     findDayByDateString = (dateString) =>{
         for(let i = 0; i < this._liElements.length; i++){
             if (this._liElements[i].dataset.date === dateString){
@@ -234,8 +280,13 @@ class CalendarGrid {
     };
 }
 
+/** @type {CalendarGrid|null} Global instance of the active calendar grid */
 let activeGrid = null;
 
+/**
+ * Initializes the calendar grid, binds it to the DOM, 
+ * and sets up cross-widget communication callbacks.
+ */
 const setup = () =>{
     activeGrid = new CalendarGrid(document.getElementById("calendarGrid"),
     ( dateStr ) =>{
