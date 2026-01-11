@@ -129,4 +129,5 @@ This project showcases modern web development practices and leverages cutting-ed
 
 ---
 
-Made with ☕ and determination + the fact my grade depends on it | A school project exploring modern web development
+Made with ☕ and determination + the fact my grade depends on it
+_A school project exploring modern web development_
