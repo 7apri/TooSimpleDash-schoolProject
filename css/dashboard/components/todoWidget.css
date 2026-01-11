@@ -32,7 +32,7 @@
     gap: min(1rem,1vh);
     flex:8;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 .task{

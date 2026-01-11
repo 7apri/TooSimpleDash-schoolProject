@@ -39,6 +39,7 @@ body{
 .scrollable{
     scrollbar-width: auto;
     scrollbar-color: var(--fg-color) var(--bg-color-high);
+    overflow: scroll;
 }
 .scrollable::-webkit-scrollbar {
   width: 10px;

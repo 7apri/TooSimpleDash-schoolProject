@@ -1,20 +1,19 @@
+.calendar {
+    padding: 2vh 1.5vw !important;
+    font-size: clamp(1rem, 2vw, 2rem) !important;
+}
+
 @media (max-width: 1199px) {
     .calendar {
         margin-bottom: 3.5em;
         height: fit-content !important;
         max-height: 80vh;
-        font-size: clamp(1rem, 5vw, 2rem) !important;
     }
-}
-
-.calendar {
-    padding: 2vh 1.5vw !important;
 }
 
 .calendar-main {
     grid-template-columns: repeat(7, 1fr);
     gap: 0;
-    overflow-y: auto;
     min-height: 0;
 }
 
@@ -26,7 +25,6 @@
 .day-btn {
     width: 85%;
     height: 85%;
-    aspect-ratio: 1 / 1;
     background: transparent;
     border-radius: 50%;
     border: none;
@@ -35,10 +33,11 @@
 
 @media (min-width: 1200px) {
     .calendar-main {
-        max-width: max(400px, 22vw);
+        max-width: 500px;
         min-height: 0;
+        max-height: 90%;
         flex: none;
-        overflow: hidden;
+        overflow-x: hidden !important;
     }
 }
 
