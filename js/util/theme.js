@@ -71,11 +71,11 @@ function updateMetaTheme() {
  */
 function applyTheme(theme, btn) {
   if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
+      root.setAttribute('data-theme', theme);
   } else {
-      root.removeAttribute('data-theme');
+    root.removeAttribute('data-theme');
   }
-  
+  root.style.colorScheme = theme;
   localStorage.setItem(THEME_KEY, theme);
 
   if (btn) updateThemeButton(btn, theme);

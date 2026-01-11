@@ -10,7 +10,7 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="./assets/og-image.png">
 
-    <meta name="theme-color" content="">
+    <meta name="theme-color" content="#222831" id="theme-color">
     <meta name="color-scheme" content="dark light">
 
     <title>Login | SimpleDash</title>
@@ -19,21 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.svg">
-    <script>
-        (function() {
-            let color = '#222831';
-            try {
-                const saved = localStorage.getItem('theme');
-                const systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-
-                if (saved === 'light' || (!saved && systemLight)) {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    color = '#ffffff';
-                }
-            } catch (e) { }
-            document.querySelector('meta[name="theme-color"]').setAttribute('content', color);
-        })();
-    </script>
+    <script>(function(){let c='#222831',s='dark',t=localStorage.getItem('theme'),l=window.matchMedia('(prefers-color-scheme:light)').matches;if(t==='light'||(!t&&l)){document.documentElement.setAttribute('data-theme','light');c='#ffffff';s='light'}document.documentElement.style.colorScheme=s;document.getElementById('theme-color').setAttribute('content',c)})()</script>
     <link rel="stylesheet" href="./css/login/main.css">
 </head>
 <body>
