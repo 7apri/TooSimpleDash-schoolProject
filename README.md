@@ -59,7 +59,7 @@ npm install
 npm run dev
 ```
 
-4. Open your browser and navigate to the local server address (typically `http://localhost:5173`)
+5. Open your browser and navigate to the local server address (typically `http://localhost:5173`)
 
 ### Building for Production
 
