@@ -3,6 +3,7 @@
 > Your minimalist personal dashboard for staying organized and informed
 
 SimpleDash is a relatively clean, modern web-based dashboard that brings together everything you need in one place - weather updates, task management, and calendar functionality. Built as a learning project to explore modern web development practices.
+
 _Why the name? dunno just cause_
 
 ## ✨ Features
