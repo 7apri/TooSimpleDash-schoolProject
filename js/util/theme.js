@@ -60,7 +60,7 @@ function updateMetaTheme() {
     // Read the current computed background color variable from CSS
     const bgColor = getComputedStyle(root).getPropertyValue('--bg-color').trim();
     if (bgColor) {
-        metaEL.setAttribute('content', rgbToHex(bgColor));
+        metaEL.setAttribute('content', bgColor[0] === 'r' ? rgbToHex(bgColor) : bgColor);
     }
 }
 
