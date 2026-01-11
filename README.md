@@ -52,7 +52,7 @@ cd TooSimpleDash-schoolProject
 npm install
 ```
 
-3. Right now u have to copy the iconBundle.svg from /assets to-> /dist/assets
+3. For now u have to copy the iconBundle.svg from /assets to-> /dist/assets
 
 4. Start the development server:
 ```bash
