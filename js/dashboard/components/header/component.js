@@ -55,10 +55,10 @@ const renderHeaderUpdateDate = (date, element = document.getElementById("update-
  * 
  * @returns {boolean} Either true or false depens on how it went.
  */
-const renderHeader = (updateDate, element = document.querySelector("header")) =>  {
+const renderHeader = (updateDate, city, element = document.querySelector("header")) =>  {
     try{
-        renderHeaderCity(city,element);
-        renderHeaderUpdateDate(updateDate,element)
+        renderHeaderCity(city);
+        renderHeaderUpdateDate(updateDate);
 
         return true;
     }
