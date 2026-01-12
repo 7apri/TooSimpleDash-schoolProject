@@ -106,7 +106,7 @@ export const getLocation = async () => {
  * response object (including current, daily, and hourly forecasts), or undefined on failure.
  */
 export const getWeatherData = async (latitude, longitude, queryOptions = [] )=> {
-    const apiKey = "da4fa759748709a0557e760eec0d7ef9";
+    const apiKey = "rly";
     try{
         const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=cz&` + queryOptions.join('&'));
         const data = await response.json();
