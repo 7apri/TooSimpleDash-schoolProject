@@ -106,9 +106,10 @@ export const getLocation = async () => {
  * response object (including current, daily, and hourly forecasts), or undefined on failure.
  */
 export const getWeatherData = async (latitude, longitude, queryOptions = [] )=> {
-    const apiKey = "rly";
+    const apiKey = "";
     try{
         const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=cz&` + queryOptions.join('&'));
+        if(!response.ok) throw Error("API return not ok: " + response.status);
         const data = await response.json();
         return data;
     }
@@ -159,6 +160,7 @@ const getData  = async ( options = {useDummyPos:false,useDummyData:false} )=>{
 
     if (!weatherData) {
         const isLocationValid = (currentLocation) => (parsed) => {
+            if(!(parsed.data.lat && parsed.data.lon)) return false;
             const latMatch = currentLocation.latitude.toFixed(2) === parsed.data.lat.toFixed(2);
             const lonMatch = currentLocation.longitude.toFixed(2) === parsed.data.lon.toFixed(2);
             return latMatch && lonMatch;
