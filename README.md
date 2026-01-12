@@ -79,21 +79,22 @@ npm run preview
 This project is currently under active development as part of a learning journey into modern web development. While the core functionality is working, there are still features being refined and improved. Think of it as a work-in-progress masterpiece! 🎨
 
 ### Known Limitations
-- Weather API integration may require configuration
 - The dev is too lazy to make a working product.
-- Authentication system is planned but not yet implemented
+- The API key is currently exposed on the client-side i am planning to solve this with a proper backend.
 - Most features should be optimized for better performance
+- Authentication system is planned but not yet implemented
 
 ## 📋 Roadmap
 
+- [ ] Better project structure for vite (was not originaly made with vite in mind)
 - [ ] Full logic refactor and code cleanup
 - [ ] A working back end to make it actually work
 - [ ] Full authentication and user management
 - [ ] Cloud synchronization for tasks and settings
-- [ ] Additional widget types (news, stocks, etc.)
-- [ ] Mobile app version
 - [ ] Multi-language support
+- [ ] Additional widget types (news, stocks, etc.)
 - [ ] Widget customization and layouts 
+- [ ] Mobile app version
 
 ## 🏗️ Project Structure
 
