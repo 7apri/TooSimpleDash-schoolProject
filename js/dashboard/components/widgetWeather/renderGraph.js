@@ -1,3 +1,5 @@
+import { stupne } from "../../../util/misc.js";
+
 /*
  * Renders the day's graf into the DOM element provided.
  * By default its the el with id=graf
@@ -37,7 +39,7 @@ const renderGraph = (temps, element = document.getElementById("graf")) => {
             
             textElement.textContent = Math.abs(temps[index]);
             
-            srElement.textContent = ["Ráno", "Ve dne", "Večer", "V noci"][index] + " je " + temps[index] + "°";
+            srElement.textContent = `${["Ráno", "Ve dne", "Večer", "V noci"][index]} je ${temps[index]} ${stupne(temps[index])}`;
         }
 
         const canvas = element.querySelector(".weather-day-graf");
