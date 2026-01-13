@@ -53,13 +53,14 @@ cd TooSimpleDash-schoolProject
 ```bash
 npm install
 ```
-3. API Configuration:
+3. For the weather widget to function, you need to provide your own OpenWeatherMap API key.
 
-For the weather widget to function, you need to provide your own OpenWeatherMap API key.
 Insert your key into the getWeatherData() function located in:
-`js/dashboard/components/widgetWeather/getData.js`
+```bash
+js/dashboard/components/widgetWeather/getData.js
+```
 
-4. Start the development server:
+5. Start the development server:
 ```bash
 npm run dev
 ```
