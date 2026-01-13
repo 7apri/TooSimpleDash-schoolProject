@@ -57,7 +57,7 @@ npm install
 
 For the weather widget to function, you need to provide your own OpenWeatherMap API key.
 Insert your key into the getWeatherData() function located in:
-js/dashboard/components/widgetWeather/getData.js
+`js/dashboard/components/widgetWeather/getData.js`
 
 4. Start the development server:
 ```bash
