@@ -106,7 +106,13 @@ export const getLocation = async () => {
  * response object (including current, daily, and hourly forecasts), or undefined on failure.
  */
 export const getWeatherData = async (latitude, longitude, queryOptions = [] )=> {
-    const apiKey = "";
+    // REPLACE_ME_PLEASE: Insert your OpenWeatherMap API key here
+    const apiKey = "YOUR-API-KEY-HERE";
+        if(apiKey === "YOUR-API-KEY-HERE"){
+            console.warn('Weather API key is missing! Please add it in getData.js');
+            return null;
+        }
+    
     try{
         const response = await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=cz&` + queryOptions.join('&'));
         if(!response.ok) throw Error("API return not ok: " + response.status);
