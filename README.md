@@ -39,6 +39,7 @@ _Why the name? dunno just cause_
 ### Prerequisites
 - Node.js (v14 or higher)
 - npm or yarn package manager
+- an openweather API 3.0 key
 
 ### Installation
 
@@ -52,10 +53,11 @@ cd TooSimpleDash-schoolProject
 ```bash
 npm install
 ```
+3. For the time being you will have to do insert (paste) your API key.
+Into /js/dashboard/components/widgetWeather/getData.js "getWeatherData()"
 
-3. For now u have to copy the iconBundle.svg from /assets to-> /dist/assets
-
-4. Start the development server:
+4
+. Start the development server:
 ```bash
 npm run dev
 ```
@@ -68,6 +70,7 @@ Create an optimized production build:
 ```bash
 npm run build
 ```
+For now you have to copy the iconBundle.svg from /assets to-> /dist/assets
 
 Preview the production build:
 ```bash
